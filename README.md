@@ -56,3 +56,10 @@ suggestion, and an empty prefix is the natural way to dump the whole index.
 - `complete(prefix)` — returns a sorted array of every word starting with
   `prefix`. Non-string prefixes return `[]`.
 - `length` — the number of distinct words in the index.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
